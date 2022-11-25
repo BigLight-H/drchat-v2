@@ -17,7 +17,8 @@ class Pusher
 
     public function __construct()
     {
-        $this->pusher = new PusherKernal(Config::get('chat.event_pusher_url', 'http://127.0.0.1:' . Config::get('chat.http_port', '9580')));
+        $ws = Config::get('chat.event_pusher_url', 'http://127.0.0.1:' . Config::get('chat.http_port', '9580'));
+        $this->pusher = new PusherKernal($ws);
     }
 
     static public function instance()

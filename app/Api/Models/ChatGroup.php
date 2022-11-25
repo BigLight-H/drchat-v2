@@ -43,9 +43,9 @@ class ChatGroup extends Model
      */
     public function isMember($group_id, $user_id)
     {
-        return ChatGroupUser::query()->where([
+        return (bool)ChatGroupUser::query()->where([
             ['group_id', '=', $group_id],
             ['user_id', '=', $user_id],
-        ])->count() ? true : false;
+        ])->count();
     }
 }

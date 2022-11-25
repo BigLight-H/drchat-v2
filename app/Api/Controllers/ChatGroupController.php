@@ -42,8 +42,8 @@ class ChatGroupController extends Controller
         if (!is_array($userIds)) {
             $userIds = explode(',', $userIds);
         }
-        if (count($userIds) > 50) {
-            return ApiResponse::error('不能群成员不能一次添加超过50个');
+        if (count($userIds) > 50 || count($userIds) < 1) {
+            return ApiResponse::error('不能群成员不能一次添加超过50个或小于1');
         } else if (!trim($name)) {
             return ApiResponse::error('群名称不能为空');
         } else if ($group = DB::transaction(function () use ($userIds, $avatar, $request, $name) {

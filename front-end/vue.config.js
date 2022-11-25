@@ -5,7 +5,7 @@ module.exports       = defineConfig({
         https: true,
         proxy: {
             '/api': {
-                target: 'http://192.168.1.7',
+                target: 'http://drchat.me',
                 ws: true,
                 changeOrigin: true,
             },

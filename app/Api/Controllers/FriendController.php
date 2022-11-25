@@ -102,6 +102,7 @@ class FriendController extends Controller
         } else if ($friendModel->isFriend($friend_id, $request->userId())) {
             return ApiResponse::error('双方已经是好友关系');
         }
+        if ($request->userId() == $friend_id) return ApiResponse::error('不能添加自己为好友');
         $result = $model->createRequest($friend_id, $request->userId(), ['remark_name' => $remark_name, 'source' => $source, 'message' => $message]);
         if (!$result) {
             return ApiResponse::error('添加失败');
